@@ -11,7 +11,7 @@ trackingId: UA-26529417-1
 # title of story map
 metaTitle: Playlist
 # Author of story map
-metaAuthor: Esri
+metaAuthor: Maps.com
 # Keywords to define story map
 metaKeywords: Story Map
 # Description of story map
@@ -21,11 +21,11 @@ metaSocialURL: http://storymaps.esri.com
 # Permanent URL of app thumbnail. This is the thumbnail to be used when app is shared to Facebook and Twitter
 metaThumbnailURL: http://sample.com/thumbnail.png
 # Website/Organization's name to be used in sharing to Facebook and Twitter
-metaSiteName: Esri
+metaSiteName: Maps.com
 # Default text to be used while sharing app on Twitter
 metaTwitterText: Playlist
 # Twitter Handle to be used while sharing app on Twitter
-metaTwitterHandle: EsriStoryMaps
+metaTwitterHandle: Mapsdotcom
 # Favicon URL
 metaFaviconURL: //resources.esri.com/favicon.ico
 # Shortcut URL to be used for iOS webapp
