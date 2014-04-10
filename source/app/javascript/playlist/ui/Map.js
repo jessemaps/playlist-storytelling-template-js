@@ -45,7 +45,7 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 	* Class to define a new map for the playlist template
 	*/
 
-	return function PlaylistMap(isMobile,geometryServiceURL,bingMapsKey,maxZoomLevel,webmapId,excludedLayers,dataFields,displayLegend,legendStartOpen,playlistLegendConfig,mapSelector,playlistLegendSelector,legendSelector,sidePaneSelector,onLoad,onHideLegend,onListItemRefresh,onHighlight,onRemoveHighlight,onSelect,onRemoveSelection)
+	return function PlaylistMap(isMobile,geometryServiceURL,bingMapsKey,maxZoomLevel,zoomAndCenterEachPoint,webmapId,excludedLayers,dataFields,displayLegend,playlistLegendConfig,mapSelector,playlistLegendSelector,legendSelector,sidePaneSelector,onLoad,onHideLegend,onListItemRefresh,onHighlight,onRemoveHighlight,onSelect,onRemoveSelection)
 	{
 		var _mapConfig = new MapConfig(),
 		_map,
@@ -94,8 +94,9 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 				_mapResponse = response;
 				_map = response.map;
 
+				
 			  //ADD ZOOM OUT LINK
-				var zoomOutLink = dojo.create("a", {
+			  var zoomOutLink = dojo.create("a", {
 				  "class": "action",
 				  "id": "zoomOutLink",
 				  "innerHTML": "Zoom out",
@@ -200,18 +201,32 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 					graphic.infoTemplate = layer.infoTemplate;
 				}
 
-				if (graphic.getNode() && domGeom.position(graphic.getNode()).x > getSidePanelWidth()){
-					var mapPos = domGeom.position(dom.byId(mapSelector));
-					var point = new ScreenPoint(domGeom.position(graphic.getNode()).x - mapPos.x, domGeom.position(graphic.getNode()).y - mapPos.y + _mapConfig.getMarkerPosition().height);
-					openPopup(graphic,_map.toMap(point));
+				if (zoomAndCenterEachPoint) {
+				  var featureZoomLevel = _map.getZoom();
+				  if (graphic.attributes.ZoomLevel) {
+				    featureZoomLevel = graphic.attributes.ZoomLevel;
+				  }
+				  on.once(_map, "extent-change", function () {
+				    _map.infoWindow.hide();
+				    openPopup(graphic);
+				  });
+				  centerAndZoomToGraphic(graphic.geometry, featureZoomLevel);
 				}
-				else{
-					on.once(_map,"extent-change",function(){
-						_map.infoWindow.hide();
-						openPopup(graphic);
-					});
-					panMapToGraphic(graphic.geometry);
-				}
+        else {
+				  if (graphic.getNode() && domGeom.position(graphic.getNode()).x > getSidePanelWidth()) {
+				    var mapPos = domGeom.position(dom.byId(mapSelector));
+				    var point = new ScreenPoint(domGeom.position(graphic.getNode()).x - mapPos.x, domGeom.position(graphic.getNode()).y - mapPos.y + _mapConfig.getMarkerPosition().height);
+				    openPopup(graphic, _map.toMap(point));
+				  }
+				  else {
+				    on.once(_map, "extent-change", function () {
+				      _map.infoWindow.hide();
+				      openPopup(graphic);
+				    });
+
+				    panMapToGraphic(graphic.geometry);
+				  }
+        }
 
 				if (!has("ie")){
 					graphic.getDojoShape().moveToFront();
@@ -535,10 +550,6 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 					onHideLegend();
 				}
 			}
-
-			if (legendStartOpen) {
-			  domClass.add("body", "show-legend");
-			}
 		}
 
 		function addLayerEvents(layer)
@@ -623,7 +634,13 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 				var newPt = geo.offset(offsetX,offsetY);
 
 				_map.centerAt(newPt);
+				//_map.centerAndZoom(newPt, zoomLevel);
+				//_map.centerAndZoom(geo, zoomLevel);
 			}
+		}
+
+		function centerAndZoomToGraphic(geometry, zoomLevel) {
+		  _map.centerAndZoom(geometry, zoomLevel);
 		}
 
 		function openPopup(graphic,newLocation)

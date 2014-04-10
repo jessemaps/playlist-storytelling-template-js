@@ -100,3 +100,7 @@ proxyUrl: ""
 geometryServiceUrl: "http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
 # Modify this to point to your sharing service URL if you are using the portal
 sharingUrl: "http://www.arcgis.com/sharing/rest/content/items"
+# Specify maximum zoom level allowed in this story map (0-20)
+maxZoomLevel: 20
+# When a location is clicked in the menu, should the map center on the point and zoom to custom zoom level specified in the data (true) or use the default storymap template behavior (false)
+zoomAndCenterEachPoint: true

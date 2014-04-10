@@ -63,7 +63,7 @@ define(["dojo/has",
 				configOptions.webmap = urlObject.query.webmap;
 			}
 
-		  _map = new Map(_mobile,configOptions.geometryServiceUrl,configOptions.bingMapsKey,configOptions.maxZoomLevel,configOptions.webmap,configOptions.excludedLayers,configOptions.dataFields,configOptions.playlistLegend.visible,configOptions.playlistLegend.legendStartOpen,configOptions.playlistLegend,"map","playlist-legend","legend","#side-pane",onMapLoad,onMapLegendHide,onLayersUpdate,onMarkerOver,onMarkerOut,onMarkerSelect,onMarkerRemoveSelection),
+		  _map = new Map(_mobile,configOptions.geometryServiceUrl,configOptions.bingMapsKey,configOptions.maxZoomLevel,configOptions.zoomAndCenterEachPoint,configOptions.webmap,configOptions.excludedLayers,configOptions.dataFields,configOptions.playlistLegend.visible,configOptions.playlistLegend,"map","playlist-legend","legend","#side-pane",onMapLoad,onMapLegendHide,onLayersUpdate,onMarkerOver,onMarkerOut,onMarkerSelect,onMarkerRemoveSelection),
 			_list = new List("#playlist","#search","#filter-content",configOptions.dataFields,onListLoad,onListGetTitleAttr,onListSelect,onListHighlight,onListRemoveHighlight,onListSearch);
 
 			loadMap();
@@ -210,6 +210,10 @@ define(["dojo/has",
 			}
 			else{
 			  $("#side-pane-controls .toggle-description").hide();
+			}
+
+			if (configOptions.playlistLegend.legendStartOpen) {
+			  $("body").addClass("show-legend");
 			}
 
 			if (!configOptions.displaySocialMedia) {

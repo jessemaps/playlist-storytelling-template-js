@@ -58,7 +58,7 @@
 	<![endif]-->
 
 </head>
-<body class="<%= data.advancedSettings.includeDijitCSS && data.advancedSettings.dijitsTheme ? data.advancedSettings.dijitsTheme : "" %> <%= data.config.playlistLegendStartOpen ? "show-legend" : "" %>">
+<body class="<%= data.advancedSettings.includeDijitCSS && data.advancedSettings.dijitsTheme ? data.advancedSettings.dijitsTheme : "" %>">
 	
 	<div id="app-load-screen">
 		<div id="loader"></div>
@@ -200,7 +200,9 @@
 			// Modify this to point to your sharing service URL if you are using the portal
 			sharingUrl: "<%= data.config.sharingUrl %>",
       // Specify maximum zoom level allowed in this story map (0-20)
-      maxZoomLevel: <%= data.config.maxZoomLevel %>
+      maxZoomLevel: <%= data.config.maxZoomLevel %>,
+      //When a location is clicked in the menu, should the map center on the point and zoom to custom zoom level specified in the data (true) or use the default storymap template behavior (false)
+      zoomAndCenterEachPoint: <%= data.config.zoomAndCenterEachPoint %>
 		};
 
 	<% if isProduction %>
