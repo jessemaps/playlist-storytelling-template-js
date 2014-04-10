@@ -95,12 +95,12 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 				_map = response.map;
 
 				
-			  //ADD ZOOM OUT LINK
-			  var zoomOutLink = dojo.create("a", {
-				  "class": "action",
-				  "id": "zoomOutLink",
-				  "innerHTML": "Zoom out",
-				  "href": "javascript: void(0);"
+        //ADD ZOOM OUT LINK
+        var zoomOutLink = dojo.create("a", {
+          "class": "action",
+          "id": "zoomOutLink",
+          "innerHTML": "Zoom out",
+          "href": "javascript: void(0);"
 				}, dojo.query(".actionList", _map.infoWindow.domNode)[0]);
 
 				on(zoomOutLink, "click", zoomToHomeExtent );
@@ -202,30 +202,30 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 				}
 
 				if (zoomAndCenterEachPoint) {
-				  var featureZoomLevel = _map.getZoom();
-				  if (graphic.attributes.ZoomLevel) {
-				    featureZoomLevel = graphic.attributes.ZoomLevel;
-				  }
-				  on.once(_map, "extent-change", function () {
-				    _map.infoWindow.hide();
-				    openPopup(graphic);
-				  });
-				  centerAndZoomToGraphic(graphic.geometry, featureZoomLevel);
+          var featureZoomLevel = _map.getZoom();
+          if (graphic.attributes.ZoomLevel) {
+            featureZoomLevel = graphic.attributes.ZoomLevel;
+          }
+          on.once(_map, "extent-change", function () {
+            _map.infoWindow.hide();
+            openPopup(graphic);
+          });
+          centerAndZoomToGraphic(graphic.geometry, featureZoomLevel);
 				}
         else {
-				  if (graphic.getNode() && domGeom.position(graphic.getNode()).x > getSidePanelWidth()) {
-				    var mapPos = domGeom.position(dom.byId(mapSelector));
-				    var point = new ScreenPoint(domGeom.position(graphic.getNode()).x - mapPos.x, domGeom.position(graphic.getNode()).y - mapPos.y + _mapConfig.getMarkerPosition().height);
-				    openPopup(graphic, _map.toMap(point));
-				  }
-				  else {
-				    on.once(_map, "extent-change", function () {
-				      _map.infoWindow.hide();
-				      openPopup(graphic);
-				    });
+          if (graphic.getNode() && domGeom.position(graphic.getNode()).x > getSidePanelWidth()) {
+            var mapPos = domGeom.position(dom.byId(mapSelector));
+            var point = new ScreenPoint(domGeom.position(graphic.getNode()).x - mapPos.x, domGeom.position(graphic.getNode()).y - mapPos.y + _mapConfig.getMarkerPosition().height);
+            openPopup(graphic, _map.toMap(point));
+          }
+          else {
+            on.once(_map, "extent-change", function () {
+              _map.infoWindow.hide();
+              openPopup(graphic);
+            });
 
-				    panMapToGraphic(graphic.geometry);
-				  }
+            panMapToGraphic(graphic.geometry);
+          }
         }
 
 				if (!has("ie")){
@@ -337,7 +337,7 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 		};
 
 		function zoomToHomeExtent() {
-		  _map.setExtent(_map._mapParams.extent);
+      _map.setExtent(_map._mapParams.extent);
 		}
 
 		function getSidePanelWidth()
@@ -634,13 +634,11 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 				var newPt = geo.offset(offsetX,offsetY);
 
 				_map.centerAt(newPt);
-				//_map.centerAndZoom(newPt, zoomLevel);
-				//_map.centerAndZoom(geo, zoomLevel);
 			}
 		}
 
 		function centerAndZoomToGraphic(geometry, zoomLevel) {
-		  _map.centerAndZoom(geometry, zoomLevel);
+      _map.centerAndZoom(geometry, zoomLevel);
 		}
 
 		function openPopup(graphic,newLocation)
