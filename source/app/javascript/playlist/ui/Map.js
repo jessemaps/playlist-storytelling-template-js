@@ -45,7 +45,7 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 	* Class to define a new map for the playlist template
 	*/
 
-	return function PlaylistMap(isMobile,geometryServiceURL,bingMapsKey,webmapId,excludedLayers,dataFields,displayLegend,legendStartOpen,playlistLegendConfig,mapSelector,playlistLegendSelector,legendSelector,sidePaneSelector,onLoad,onHideLegend,onListItemRefresh,onHighlight,onRemoveHighlight,onSelect,onRemoveSelection)
+	return function PlaylistMap(isMobile,geometryServiceURL,bingMapsKey,maxZoomLevel,webmapId,excludedLayers,dataFields,displayLegend,legendStartOpen,playlistLegendConfig,mapSelector,playlistLegendSelector,legendSelector,sidePaneSelector,onLoad,onHideLegend,onListItemRefresh,onHighlight,onRemoveHighlight,onSelect,onRemoveSelection)
 	{
 		var _mapConfig = new MapConfig(),
 		_map,
@@ -76,7 +76,8 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 			arcgisUtils.createMap(webmapId,mapSelector,{
 				mapOptions: {
 					sliderPosition: "top-right",
-					infoWindow: popup
+					infoWindow: popup,
+					maxZoom: maxZoomLevel
 				},
 				geometryServiceURL: geometryServiceURL,
 				bingMapsKey: bingMapsKey
@@ -92,6 +93,17 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 				
 				_mapResponse = response;
 				_map = response.map;
+
+			  //ADD ZOOM OUT LINK
+				var zoomOutLink = dojo.create("a", {
+				  "class": "action",
+				  "id": "zoomOutLink",
+				  "innerHTML": "Zoom out",
+				  "href": "javascript: void(0);"
+				}, dojo.query(".actionList", _map.infoWindow.domNode)[0]);
+
+				on(zoomOutLink, "click", zoomToHomeExtent );
+
 
 				// ADD HOME BUTTON TO ZOOM SLIDER
 				on.once(_map,"extent-change",function(){
@@ -308,6 +320,10 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 				}
 			});
 		};
+
+		function zoomToHomeExtent() {
+		  _map.setExtent(_map._mapParams.extent);
+		}
 
 		function getSidePanelWidth()
 		{

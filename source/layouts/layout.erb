@@ -198,7 +198,9 @@
 			// Specify the url to a geometry service
 			geometryServiceUrl: "<%= data.config.geometryServiceUrl %>",
 			// Modify this to point to your sharing service URL if you are using the portal
-			sharingUrl: "<%= data.config.sharingUrl %>"
+			sharingUrl: "<%= data.config.sharingUrl %>",
+      // Specify maximum zoom level allowed in this story map (0-20)
+      maxZoomLevel: <%= data.config.maxZoomLevel %>
 		};
 
 	<% if isProduction %>
