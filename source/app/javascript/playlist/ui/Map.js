@@ -100,7 +100,8 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
           "class": "action",
           "id": "zoomOutLink",
           "innerHTML": "Zoom out",
-          "href": "javascript: void(0);"
+          "href": "#",
+          "onclick": "return false;"
 				}, dojo.query(".actionList", _map.infoWindow.domNode)[0]);
 
 				on(zoomOutLink, "click", zoomToHomeExtent );
