@@ -63,7 +63,7 @@ define(["dojo/has",
 				configOptions.webmap = urlObject.query.webmap;
 			}
 
-			_map = new Map(_mobile,configOptions.geometryServiceUrl,configOptions.bingMapsKey,configOptions.webmap,configOptions.excludedLayers,configOptions.dataFields,configOptions.playlistLegend.visible,configOptions.playlistLegend,"map","playlist-legend","legend","#side-pane",onMapLoad,onMapLegendHide,onLayersUpdate,onMarkerOver,onMarkerOut,onMarkerSelect,onMarkerRemoveSelection),
+		  _map = new Map(_mobile,configOptions.geometryServiceUrl,configOptions.bingMapsKey,configOptions.webmap,configOptions.excludedLayers,configOptions.dataFields,configOptions.playlistLegend.visible,configOptions.playlistLegend.legendStartOpen,configOptions.playlistLegend,configOptions.playlistShowDescription,"map","playlist-legend","legend","#side-pane",onMapLoad,onMapLegendHide,onLayersUpdate,onMarkerOver,onMarkerOut,onMarkerSelect,onMarkerRemoveSelection),
 			_list = new List("#playlist","#search","#filter-content",configOptions.dataFields,onListLoad,onListGetTitleAttr,onListSelect,onListHighlight,onListRemoveHighlight,onListSearch);
 
 			loadMap();
@@ -205,11 +205,11 @@ define(["dojo/has",
 			$(".subtitle-text").html(configOptions.subtitle || subtitle || "");
 			$("#description").html(descriptionText);
 
-			if (descriptionText){
-				$("body").addClass("show-description");
+			if (descriptionText && configOptions.playlistShowDescription) {
+			  $("body").addClass("show-description");
 			}
 			else{
-				$("#side-pane-controls .toggle-description").hide();
+			  $("#side-pane-controls .toggle-description").hide();
 			}
 		}
 

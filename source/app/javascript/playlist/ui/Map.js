@@ -45,7 +45,7 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 	* Class to define a new map for the playlist template
 	*/
 
-	return function PlaylistMap(isMobile,geometryServiceURL,bingMapsKey,webmapId,excludedLayers,dataFields,displayLegend,playlistLegendConfig,mapSelector,playlistLegendSelector,legendSelector,sidePaneSelector,onLoad,onHideLegend,onListItemRefresh,onHighlight,onRemoveHighlight,onSelect,onRemoveSelection)
+	return function PlaylistMap(isMobile,geometryServiceURL,bingMapsKey,webmapId,excludedLayers,dataFields,displayLegend,legendStartOpen,playlistLegendConfig,playlistShowDescription,mapSelector,playlistLegendSelector,legendSelector,sidePaneSelector,onLoad,onHideLegend,onListItemRefresh,onHighlight,onRemoveHighlight,onSelect,onRemoveSelection)
 	{
 		var _mapConfig = new MapConfig(),
 		_map,
@@ -518,6 +518,10 @@ define(["storymaps/playlist/config/MapConfig","esri/map",
 				if (legendLyrs < 1){
 					onHideLegend();
 				}
+			}
+
+			if (legendStartOpen) {
+			  domClass.add("body", "show-legend");
 			}
 		}
 

@@ -46,6 +46,12 @@ description: ""
 
 playlistLegendVisible: false
 
+# Display legend when map is first opened
+playlistLegendStartOpen: true
+
+# Specify whether or not the description box should be visible at all
+playlistShowDescription: true
+
 # Playlist layer title
 playlistTitle: Playlist Layer
 

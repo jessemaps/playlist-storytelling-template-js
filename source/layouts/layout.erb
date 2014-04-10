@@ -58,7 +58,7 @@
 	<![endif]-->
 
 </head>
-<body class="<%= data.advancedSettings.includeDijitCSS && data.advancedSettings.dijitsTheme ? data.advancedSettings.dijitsTheme : "" %>">
+<body class="<%= data.advancedSettings.includeDijitCSS && data.advancedSettings.dijitsTheme ? data.advancedSettings.dijitsTheme : "" %> <%= data.config.playlistLegendStartOpen ? "show-legend" : "" %>">
 	
 	<div id="app-load-screen">
 		<div id="loader"></div>
@@ -150,6 +150,8 @@
 				"layerTitle": "<%= data.config.playlistTitle %>",
 				// Choose to display your playlist point layer in the legend (true or false).
 				"visible": <%= data.config.playlistLegendVisible %>,
+        // Choose to have map open with legend visible.
+        "legendStartOpen": <%= data.config.playlistLegendStartOpen %>,
 				"items": {
 					"redIcon": {
 						// Choose to display icon in the legend (true or false).
@@ -181,6 +183,8 @@
 					}
 				}
 			},
+      // Specify whether or not the description box should be visible at all
+      playlistShowDescription: <%= data.config.playlistShowDescription %>,
 			// Add the layer names of valid point layers that should be excluded from the playlist and used as reference layers
 			excludedLayers: [],
 			// If the webmap uses Bing Maps data, you will need to provided your Bing Maps Key
