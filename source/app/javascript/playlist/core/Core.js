@@ -211,6 +211,13 @@ define(["dojo/has",
 			else{
 			  $("#side-pane-controls .toggle-description").hide();
 			}
+
+			if (!configOptions.displaySocialMedia) {
+			  $("#social").hide();
+			}
+			if (!configOptions.displayLogo) {
+			  $("#logo").hide();
+			}
 		}
 
 		function checkReadyState()

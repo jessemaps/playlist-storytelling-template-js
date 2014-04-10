@@ -65,7 +65,7 @@
 		<h4 id="loading-message">Loading <%= data.advancedSettings.appName %></h4>
 	</div>
 
-	<div id="bitly-overlay" class="modal bitly-modal">
+  <div id="bitly-overlay" class="modal bitly-modal">
 		<a class="icon-close right" onclick="$('.bitly-modal').removeClass('visible');"></a>		
 		<h4>Bitly link to share</h4>
 		<br>
@@ -131,6 +131,10 @@
 			subtitle: "<%= data.config.subtitle %>",
 			// Enter a description, if not specified the ArcGIS.com web map's description is used
 			description: "<%= data.config.description %>",
+      // Display Social Media info in header
+      displaySocialMedia: <%= data.config.displaySocialMedia %>,
+      // Display logo in header
+      displayLogo: <%= data.config.displayLogo %>,
 			// Choose data fields
 			dataFields: {
 				// Change name field to match data

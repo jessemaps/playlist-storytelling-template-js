@@ -41,6 +41,11 @@ subtitle: ""
 # App description, leave black to use webmap description
 description: ""
 
+# Display Social Media info in header
+displaySocialMedia: true
+# Display logo in header
+displayLogo: true
+
 
 # LEGEND AND DESCRIPTION
 
