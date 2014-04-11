@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -8,7 +8,7 @@
 
 	<meta name="author" content="Maps.com">
 	<meta name="keywords" content="Story Map">
-	<meta name="description" content="Add description for app">
+	<meta name="description" content="United States Acquisitions">
 
 	<!--Facebook Open Graph-->
 	<meta property="og:title" content="Playlist" />
@@ -16,7 +16,7 @@
 	<meta property="og:url" content="http://storymaps.esri.com" />
 	<meta property="og:image" content="http://sample.com/thumbnail.png" />
 	<meta property="og:site_name" content="Maps.com" />
-	<meta property="og:description" content="Add description for app"/>
+	<meta property="og:description" content="United States Acquisitions web map"/>
 	<meta property="fb:app_id" content="475867552452282" />
 	<!--End Facebook-->
 
@@ -25,7 +25,7 @@
 	<meta name="twitter:site" content="@Mapsdotcom">
 	<meta name="twitter:url" content="http://storymaps.esri.com">
 	<meta name="twitter:title" content="Playlist">
-	<meta name="twitter:description" content="Add description for app">
+	<meta name="twitter:description" content="United States Acquisitions web map">
 	<meta name="twitter:image" content="http://sample.com/thumbnail.png">
 	<!--Twitter Card Data-->
 
@@ -214,27 +214,27 @@
 
 		var configOptions = {
 			// The web map id
-			webmap: "225d8fdebb1440db80165645dcd16b91",
+			webmap: "941d41b275ac48f6bb6a2c3d2d91b19f",
 			// Enter a title, if no title is specified, the webmap's title is used.
-			title: "",
+			title: "United States Acquisitions",
 			// Enter a subtitle, if not specified the ArcGIS.com web map's summary is used
 			subtitle: "",
 			// Enter a description, if not specified the ArcGIS.com web map's description is used
 			description: "",
       // Display Social Media info in header
-      displaySocialMedia: true,
+      displaySocialMedia: false,
       // Display logo in header
-      displayLogo: true,
+      displayLogo: false,
 			// Choose data fields
 			dataFields: {
 				// Change name field to match data
-				nameField: "",
+				nameField: "TerritoryWithYear",
 				// Change thumbnail field to match data
 				imageField: "",
 				// Change color field to match data
 				colorField: "",
 				// Change order field to match data
-				orderField: "",
+				orderField: "NUMBER",
 				// Change name filter to match data
 				filterField: ""
 			},
@@ -278,9 +278,9 @@
 				}
 			},
       // Specify whether or not the description box should be visible at all
-      playlistShowDescription: true,
+      playlistShowDescription: false,
 			// Add the layer names of valid point layers that should be excluded from the playlist and used as reference layers
-			excludedLayers: [],
+      excludedLayers: ["US Acquisitions points", "US Acquisitions_labelPoints"],
 			// If the webmap uses Bing Maps data, you will need to provided your Bing Maps Key
 			bingMapsKey: "",
 			// Specify a proxy for custom deployment
@@ -290,7 +290,7 @@
 			// Modify this to point to your sharing service URL if you are using the portal
 			sharingUrl: "http://www.arcgis.com/sharing/rest/content/items",
       // Specify maximum zoom level allowed in this story map (0-20)
-      maxZoomLevel: 20,
+      maxZoomLevel: 8,
       //When a location is clicked in the menu, should the map center on the point and zoom to custom zoom level specified in the data (true) or use the default storymap template behavior (false)
       zoomAndCenterEachPoint: true
 		};
