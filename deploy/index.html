@@ -6,7 +6,7 @@
 
 	<title>Playlist</title>
 
-	<meta name="author" content="Esri">
+	<meta name="author" content="Maps.com">
 	<meta name="keywords" content="Story Map">
 	<meta name="description" content="Add description for app">
 
@@ -15,14 +15,14 @@
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="http://storymaps.esri.com" />
 	<meta property="og:image" content="http://sample.com/thumbnail.png" />
-	<meta property="og:site_name" content="Esri" />
+	<meta property="og:site_name" content="Maps.com" />
 	<meta property="og:description" content="Add description for app"/>
 	<meta property="fb:app_id" content="475867552452282" />
 	<!--End Facebook-->
 
 	<!--Twitter Card Data-->
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:site" content="@EsriStoryMaps">
+	<meta name="twitter:site" content="@Mapsdotcom">
 	<meta name="twitter:url" content="http://storymaps.esri.com">
 	<meta name="twitter:title" content="Playlist">
 	<meta name="twitter:description" content="Add description for app">
@@ -62,7 +62,7 @@
 		<h4 id="loading-message">Loading Playlist</h4>
 	</div>
 
-	<div id="bitly-overlay" class="modal bitly-modal">
+  <div id="bitly-overlay" class="modal bitly-modal">
 		<a class="icon-close right" onclick="$('.bitly-modal').removeClass('visible');"></a>		
 		<h4>Bitly link to share</h4>
 		<br>
@@ -150,15 +150,15 @@
 		</div><!--/header-text-->
 
 		<div id="branding-wrapper" class="region-right">
-			<div id="social">
+      <div id="social">
 				<a id="smLink" href="http://storymaps.esri.com" target="_blank">A story map</a>&nbsp;
 				<span class="icon-facebook social-share"></span>
 				<span class="icon-twitter social-share"></span>
 				<span class="icon-link social-share"></span>
 			</div><!--/social-->
-			<div id="logo">
-				<a id="logoLink" href="http://www.esri.com" target="_blank">
-					<img id="logoImg" src="resources/images/esriGlobeLogow.png" alt="Esri - Home">
+      <div id="logo">
+				<a id="logoLink" href="http://www.maps.com" target="_blank">
+					<img id="logoImg" src="resources/images/MapscomLogo_143x34.png" alt="powered by Maps.com">
 				</a><!--/logoLink-->
 			</div><!--/logo-->
 		</div><!--/branding-wrapper-->
@@ -221,6 +221,10 @@
 			subtitle: "",
 			// Enter a description, if not specified the ArcGIS.com web map's description is used
 			description: "",
+      // Display Social Media info in header
+      displaySocialMedia: true,
+      // Display logo in header
+      displayLogo: true,
 			// Choose data fields
 			dataFields: {
 				// Change name field to match data
@@ -240,6 +244,8 @@
 				"layerTitle": "Playlist Layer",
 				// Choose to display your playlist point layer in the legend (true or false).
 				"visible": false,
+        // Choose to have map open with legend visible.
+        "legendStartOpen": true,
 				"items": {
 					"redIcon": {
 						// Choose to display icon in the legend (true or false).
@@ -271,6 +277,8 @@
 					}
 				}
 			},
+      // Specify whether or not the description box should be visible at all
+      playlistShowDescription: true,
 			// Add the layer names of valid point layers that should be excluded from the playlist and used as reference layers
 			excludedLayers: [],
 			// If the webmap uses Bing Maps data, you will need to provided your Bing Maps Key
@@ -280,7 +288,11 @@
 			// Specify the url to a geometry service
 			geometryServiceUrl: "http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
 			// Modify this to point to your sharing service URL if you are using the portal
-			sharingUrl: "http://www.arcgis.com/sharing/rest/content/items"
+			sharingUrl: "http://www.arcgis.com/sharing/rest/content/items",
+      // Specify maximum zoom level allowed in this story map (0-20)
+      maxZoomLevel: 20,
+      //When a location is clicked in the menu, should the map center on the point and zoom to custom zoom level specified in the data (true) or use the default storymap template behavior (false)
+      zoomAndCenterEachPoint: true
 		};
 
 	
