@@ -3,3 +3,7 @@ fieldset:before,.input-list li:before,#header nav li:before,#footer-social-nav l
 .playlist-item.no-image {
   height: auto;
 }
+
+#legend {
+  display: none;
+}
